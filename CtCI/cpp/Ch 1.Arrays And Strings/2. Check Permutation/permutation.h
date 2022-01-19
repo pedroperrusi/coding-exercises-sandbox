@@ -18,7 +18,7 @@ bool isPermutationBySorting(string str1, string str2) {
 	return str1 == str2;
 }
 
-// Without using data-structures we can resort to sorting algorithms to avoid nested loops (O(n^2))
+// One can take advantage of the known character set to count occurrences of the letters
 // Time Complexity bounded by sort: O(n)
 // Space complexity bounded by sort: O(n)
 bool isPermutationByCounting(string str1, string str2) {
