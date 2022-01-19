@@ -22,4 +22,4 @@ include(GoogleTest)
 
 enable_testing()
 add_subdirectory("Sanity GTest")
-# add_subdirectory("Ch 1.Arrays And Strings")
+add_subdirectory("Ch 1.Arrays And Strings")
