@@ -18,6 +18,8 @@ void removeDups(Node* list_ptr){
             previous = n_ptr;
         } else {
             previous->next = n_ptr->next;
+            n_ptr->next = nullptr;
+            delete n_ptr;
             n_ptr = previous;
         }
     }
