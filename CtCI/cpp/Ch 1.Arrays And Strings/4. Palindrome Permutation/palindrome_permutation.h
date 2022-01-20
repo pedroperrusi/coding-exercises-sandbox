@@ -27,7 +27,7 @@ bool isPalindromePermutation(string str) {
 	bitset<28> odd_occurrences(0); // 1 if odd occurrence of one of the letters, 0 otherwise
 	for (const auto ch : str) {
 		int code = getCharEncoding(ch);
-		odd_occurrences.flip(code);
+		if (code >= 0 ) odd_occurrences.flip(code);
 	}
 	// check for any 1 bit still on the bitset
 	// only one is allowed for a palindrome permutation
