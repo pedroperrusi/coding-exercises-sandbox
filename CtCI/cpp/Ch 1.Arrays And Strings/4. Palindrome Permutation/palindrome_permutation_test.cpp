@@ -22,7 +22,6 @@ TEST(CH1_PALINDROME_PERMUTATION, PALINDROME) {
 	EXPECT_TRUE(isPalindromePermutation("abba"));
 	EXPECT_TRUE(isPalindromePermutation("wow"));
 	EXPECT_TRUE(isPalindromePermutation("arara"));
-	EXPECT_TRUE(isPalindromePermutation("Tact Coa"));
 }
 
 TEST(CH1_PALINDROME_PERMUTATION, NOT_PALINDROME) {
@@ -47,7 +46,7 @@ TEST(CH1_PALINDROME_PERMUTATION, getCharEncodingCaseSensitive) {
 	EXPECT_EQ(getCharEncoding('Z'), getCharEncoding('z'));
 }
 
-TEST(CH1_PALINDROME_PERMUTATION, PALINDROME_WITH_SPACES) {
+TEST(CH1_PALINDROME_PERMUTATION, PALINDROME_WITH_SYMBOLS_AND_SPACES) {
 	EXPECT_TRUE(isPalindromePermutation("Tact Coa"));
-	EXPECT_TRUE(isPalindromePermutation("T  ^$& a c t C o a  "));
+	EXPECT_TRUE(isPalindromePermutation("T  ^$& a c t C o a *** "));
 }
