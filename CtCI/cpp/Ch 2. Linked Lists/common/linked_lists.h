@@ -13,48 +13,60 @@ class Node {
 
     virtual ~Node() { delete next; }
 
-    void push_back(T d) {
-        Node* node = new Node<T>(d);
-        // iterate to the last element
-        Node* n_ptr;
-        for (n_ptr = this; n_ptr->next != nullptr; n_ptr = n_ptr->next) {}
-        n_ptr->next = node;
-    }
+    inline T visit() { return this->data; }
 
-    T visit() {
-        return this->data;
-    }
-
-    void set(T data) {
-        this->data = data;
-    }
+    inline void set(T data) { this->data = data; }
 
 };
 
 template <typename T>
-T visit(const Node<T>& node, size_t idx) {
-    size_t i = 0;
-    for (const Node<T>* n_ptr = &node; n_ptr != nullptr; n_ptr = n_ptr->next) {
-        if (i == idx) return n_ptr->data;
-        i++;
-    }
-    return T();
-}
+class LinkedList {
+  private:
+    Node<T>* root = nullptr;
 
-template <typename T>
-void print(const Node<T>& node) {
-    const Node<T>* n_ptr;
-    for (n_ptr = &node; n_ptr->next != nullptr; n_ptr = n_ptr->next) {
-        std::cout << n_ptr->data << " -> ";
-    }
-    std::cout << n_ptr->data << std::endl;
-}
+  public:
+    LinkedList(): root(nullptr) {}
+    virtual ~LinkedList() { delete root; }
 
-template <typename T>
-size_t size(const Node<T>& node) {
-    size_t size = 0;
-    for (const Node<T>* n_ptr = &node; n_ptr != nullptr; n_ptr = n_ptr->next) size++;
-    return size;
-}
+    inline Node<T>* getRoot() { return root; }
+
+    void push_back(T d) {
+        Node<T>* node = new Node<T>(d);
+        if (root == nullptr) {
+            root = node;
+            return;
+        }
+        // iterate to the last element
+        Node<T>* n_ptr = root;
+        while(n_ptr->next != nullptr) { 
+            n_ptr = n_ptr->next; 
+        }
+        n_ptr->next = node;
+    }
+
+    T visit(size_t idx) {
+        size_t i = 0;
+        for (const Node<T>* n_ptr = getRoot(); n_ptr != nullptr; n_ptr = n_ptr->next) {
+            if (i == idx) return n_ptr->data;
+            i++;
+        }
+        return T();
+    }
+
+    void print() {
+        const Node<T>* n_ptr;
+        for (n_ptr = getRoot(); n_ptr->next != nullptr; n_ptr = n_ptr->next) {
+            std::cout << n_ptr->data << " -> ";
+        }
+        std::cout << n_ptr->data << std::endl;
+    }
+
+    size_t size() {
+        size_t size = 0;
+        for (const Node<T>* n_ptr = getRoot(); n_ptr != nullptr; n_ptr = n_ptr->next) size++;
+        return size;
+    }
+
+};
 
 }
