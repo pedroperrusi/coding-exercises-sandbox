@@ -15,15 +15,13 @@ namespace{
 void removeDups(LinkedList& list){ 
     unordered_map<int, bool> occurrences;  // boolean hash-table
     Node* previous;
-    for (Node* n_ptr = list.getRoot(); n_ptr != nullptr; n_ptr = n_ptr->next) {
+    for (Node* n_ptr = list.getRoot(); n_ptr != nullptr; n_ptr = n_ptr->getNext()) {
         int key = n_ptr->visit();
         if (!occurrences.count(key)) {
             occurrences[key] = true;
             previous = n_ptr;
         } else {
-            previous->next = n_ptr->next;
-            n_ptr->next = nullptr;
-            delete n_ptr;
+            previous->next = std::move(n_ptr->next);
             n_ptr = previous;
         }
     }
@@ -39,16 +37,13 @@ void removeDups(LinkedList& list){
         Node* runner_ptr = slow_ptr;
         // remove any future occurrences
         while (runner_ptr != nullptr) {
-            Node* next_ptr = runner_ptr->next;
+            Node* next_ptr = runner_ptr->getNext();
             if (value == next_ptr->visit()) {
-                runner_ptr->next = next_ptr->next;
-                // detach and delete it
-                next_ptr->next = nullptr;
-                delete next_ptr;
+                runner_ptr->next = std::move(next_ptr->next);
             }
-            runner_ptr = runner_ptr->next;
+            runner_ptr = runner_ptr->getNext();
         }
-        slow_ptr = slow_ptr->next;
+        slow_ptr = slow_ptr->getNext();
     }
  }
 
