@@ -3,6 +3,7 @@ project(my_project)
 
 # GoogleTest requires at least C++14
 set(CMAKE_CXX_STANDARD 14)
+add_compile_options(-Wall -Wextra -Wpedantic)
 
 # place binaries and libraries according to GNU standards
 include(GNUInstallDirs)

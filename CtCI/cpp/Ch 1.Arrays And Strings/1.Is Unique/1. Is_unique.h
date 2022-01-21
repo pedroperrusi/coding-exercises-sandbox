@@ -38,7 +38,7 @@ bool isUniqueChars_noDS( string str) {
     sort(str.begin(), str.end(), [](char a, char b){ return tolower(a) < tolower(b); }); // O(nlogn) sort from <algorithm>
 
 	// compare two consecutive elements
-	for (int i = 0 ; i < str.size() - 1; i++){
+	for (size_t i = 0 ; i < str.size() - 1; i++){
 		if ( tolower(str[i]) == tolower(str[i+1]) ){
 			return false;
 		}

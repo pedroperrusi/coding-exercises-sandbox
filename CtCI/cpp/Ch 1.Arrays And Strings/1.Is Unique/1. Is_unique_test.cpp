@@ -23,7 +23,7 @@ TEST(CH1_IS_UNIQUE, NOT_CASE_SENSITIVE) {
 TEST(CH1_IS_UNIQUE, MIXED_TESTING) {
 	vector<string> words = {"abcde", "hello", "apple", "kite", "padle"};
 	vector<bool> expects = {true, false, false, true, true};
-    for (auto i = 0; i < words.size(); i++)
+    for (size_t i = 0; i < words.size(); i++)
     {
         EXPECT_EQ(expects[i], isUniqueChars(words[i]));
     }
@@ -44,7 +44,7 @@ TEST(CH1_IS_UNIQUE_noDS, NOT_CASE_SENSITIVE) {
 TEST(CH1_IS_UNIQUE_noDS, MIXED_TESTING) {
 	vector<string> words = {"abcde", "hello", "apple", "kite", "padle"};
 	vector<bool> expects = {true, false, false, true, true};
-    for (auto i = 0; i < words.size(); i++)
+    for (size_t i = 0; i < words.size(); i++)
     {
         EXPECT_EQ(expects[i], isUniqueChars_noDS(words[i]));
     }
