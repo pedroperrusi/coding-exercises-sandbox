@@ -1,74 +1,74 @@
-#include <gtest/gtest.h>
-
 #include "remove_dups.h"
+
+#include <gtest/gtest.h>
 
 using namespace std;
 using LinkedList = LinkedList;
 
 TEST(CH2_REMOVE_DUPS, REMOVE_DUPS_SIDE_BY_SIDE) {
-	LinkedList list({0,  0});
-	
-	ASSERT_EQ(list.visit(0), 0);
-	ASSERT_EQ(list.visit(1), 0);
-	ASSERT_EQ(list.size(), 2);
+    LinkedList list({0, 0});
 
-	list.print();
-	removeDups(list);
-	list.print();
+    ASSERT_EQ(list.visit(0), 0);
+    ASSERT_EQ(list.visit(1), 0);
+    ASSERT_EQ(list.size(), 2);
 
-	ASSERT_EQ(list.visit(0), 0);
-	ASSERT_EQ(list.size(), 1);
+    list.print();
+    removeDups(list);
+    list.print();
+
+    ASSERT_EQ(list.visit(0), 0);
+    ASSERT_EQ(list.size(), 1);
 }
 
 TEST(CH2_REMOVE_DUPS, REMOVE_DUPS) {
-	LinkedList list({0, 1, 0, 1, 0});
+    LinkedList list({0, 1, 0, 1, 0});
 
-	ASSERT_EQ(list.visit(0), 0);
-	ASSERT_EQ(list.visit(1), 1);
-	ASSERT_EQ(list.visit(2), 0);
-	ASSERT_EQ(list.visit(3), 1);
-	ASSERT_EQ(list.visit(4), 0);
-	ASSERT_EQ(list.size(), 5);
+    ASSERT_EQ(list.visit(0), 0);
+    ASSERT_EQ(list.visit(1), 1);
+    ASSERT_EQ(list.visit(2), 0);
+    ASSERT_EQ(list.visit(3), 1);
+    ASSERT_EQ(list.visit(4), 0);
+    ASSERT_EQ(list.size(), 5);
 
-	list.print();
-	removeDups(list);
-	list.print();
+    list.print();
+    removeDups(list);
+    list.print();
 
-	ASSERT_EQ(list.visit(0), 0);
-	ASSERT_EQ(list.visit(1), 1);
-	ASSERT_EQ(list.size(), 2);
+    ASSERT_EQ(list.visit(0), 0);
+    ASSERT_EQ(list.visit(1), 1);
+    ASSERT_EQ(list.size(), 2);
 }
 
 TEST(CH2_REMOVE_DUPS_NO_BUFFER, REMOVE_DUPS_SIDE_BY_SIDE) {
-	LinkedList list({0,  0});
+    LinkedList list({0, 0});
 
-	ASSERT_EQ(list.visit(0), 0);
-	ASSERT_EQ(list.visit(1), 0);
-	ASSERT_EQ(list.size(), 2);
+    ASSERT_EQ(list.visit(0), 0);
+    ASSERT_EQ(list.visit(1), 0);
+    ASSERT_EQ(list.size(), 2);
 
-	list.print();
-	removeDupsNoBuffer(list);
-	list.print();
+    list.print();
+    removeDupsNoBuffer(list);
+    list.print();
 
-	ASSERT_EQ(list.visit(0), 0);
-	ASSERT_EQ(list.size(), 1);
+    ASSERT_EQ(list.visit(0), 0);
+    ASSERT_EQ(list.size(), 1);
 }
 
 TEST(CH2_REMOVE_DUPS_NO_BUFFER, REMOVE_DUPS) {
-	LinkedList list({0, 1, 0, 1, 0});
-	
-	ASSERT_EQ(list.visit(0), 0);
-	ASSERT_EQ(list.visit(1), 1);
-	ASSERT_EQ(list.visit(2), 0);
-	ASSERT_EQ(list.visit(3), 1);
-	ASSERT_EQ(list.visit(4), 0);
-	ASSERT_EQ(list.size(), 5);
+    LinkedList list({0, 1, 0, 1, 0});
 
-	list.print();
-	removeDupsNoBuffer(list);
-	list.print();
+    ASSERT_EQ(list.visit(0), 0);
+    ASSERT_EQ(list.visit(1), 1);
+    ASSERT_EQ(list.visit(2), 0);
+    ASSERT_EQ(list.visit(3), 1);
+    ASSERT_EQ(list.visit(4), 0);
+    ASSERT_EQ(list.size(), 5);
 
-	ASSERT_EQ(list.visit(0), 0);
-	ASSERT_EQ(list.visit(1), 1);
-	ASSERT_EQ(list.size(), 2);
+    list.print();
+    removeDupsNoBuffer(list);
+    list.print();
+
+    ASSERT_EQ(list.visit(0), 0);
+    ASSERT_EQ(list.visit(1), 1);
+    ASSERT_EQ(list.size(), 2);
 }

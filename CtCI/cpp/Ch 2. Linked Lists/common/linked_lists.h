@@ -16,7 +16,7 @@ namespace linked_lists {
  */
 template <typename T>
 class Node {
-  public:
+   public:
     std::unique_ptr<Node<T>> next = nullptr;
     T data;
 
@@ -25,7 +25,6 @@ class Node {
     inline T visit() { return this->data; }
     inline void set(T data) { this->data = data; }
     inline Node<T>* getNext() const { return next.get(); }
-
 };
 
 /**
@@ -38,13 +37,13 @@ class Node {
  */
 template <typename T>
 class LinkedList {
-  private:
+   private:
     std::unique_ptr<Node<T>> root = nullptr;
 
-  public:
-    LinkedList(){}
+   public:
+    LinkedList() {}
 
-    LinkedList(std::initializer_list<T> list){
+    LinkedList(std::initializer_list<T> list) {
         for (const auto& item : list) push_back(item);
     }
 
@@ -53,7 +52,7 @@ class LinkedList {
     inline Node<T>* getRoot() const { return root.get(); }
 
     void clean() {
-        while(root) {
+        while (root) {
             root = std::move(root->next);
         }
     }
@@ -66,15 +65,16 @@ class LinkedList {
         }
         // else, iterate to the last element
         Node<T>* n_ptr = getRoot();
-        while(n_ptr->next != nullptr) { 
-            n_ptr = n_ptr->getNext(); 
+        while (n_ptr->next != nullptr) {
+            n_ptr = n_ptr->getNext();
         }
         n_ptr->next = std::move(node);
     }
 
     T visit(size_t idx) {
         size_t i = 0;
-        for (const Node<T>* n_ptr = getRoot(); n_ptr != nullptr; n_ptr = n_ptr->getNext()) {
+        for (const Node<T>* n_ptr = getRoot(); n_ptr != nullptr;
+             n_ptr = n_ptr->getNext()) {
             if (i == idx) return n_ptr->data;
             i++;
         }
@@ -83,7 +83,8 @@ class LinkedList {
 
     void print() {
         const Node<T>* n_ptr;
-        for (n_ptr = getRoot(); n_ptr->next != nullptr; n_ptr = n_ptr->getNext()) {
+        for (n_ptr = getRoot(); n_ptr->next != nullptr;
+             n_ptr = n_ptr->getNext()) {
             std::cout << n_ptr->data << " -> ";
         }
         std::cout << n_ptr->data << std::endl;
@@ -91,10 +92,11 @@ class LinkedList {
 
     size_t size() {
         size_t size = 0;
-        for (const Node<T>* n_ptr = getRoot(); n_ptr != nullptr; n_ptr = n_ptr->getNext()) size++;
+        for (const Node<T>* n_ptr = getRoot(); n_ptr != nullptr;
+             n_ptr = n_ptr->getNext())
+            size++;
         return size;
     }
-
 };
 
-}
+}  // namespace linked_lists

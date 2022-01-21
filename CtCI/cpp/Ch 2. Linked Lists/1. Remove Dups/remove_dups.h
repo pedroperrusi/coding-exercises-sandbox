@@ -1,21 +1,22 @@
-#include "linked_lists.h"
 #include <iostream>
 #include <unordered_map>
 
+#include "linked_lists.h"
 
 using namespace std;
 using LinkedList = linked_lists::LinkedList<int>;
 using Node = linked_lists::Node<int>;
 
-namespace{
+namespace {
 
 // Remove duplicates using a temporary hash table to map unique values encountered
 // Time complexity O(N)
-// Space complexity O(N) 
-void removeDups(LinkedList& list){ 
+// Space complexity O(N)
+void removeDups(LinkedList& list) {
     unordered_map<int, bool> occurrences;  // boolean hash-table
     Node* previous;
-    for (Node* n_ptr = list.getRoot(); n_ptr != nullptr; n_ptr = n_ptr->getNext()) {
+    for (Node* n_ptr = list.getRoot(); n_ptr != nullptr;
+         n_ptr = n_ptr->getNext()) {
         int key = n_ptr->visit();
         if (!occurrences.count(key)) {
             occurrences[key] = true;
@@ -25,12 +26,12 @@ void removeDups(LinkedList& list){
             n_ptr = previous;
         }
     }
- }
+}
 
 // Remove duplicates using with two concurrent pointers
 // Time complexity O(N)
-// Space complexity O(1) 
- void removeDupsNoBuffer(LinkedList& list){ 
+// Space complexity O(1)
+void removeDupsNoBuffer(LinkedList& list) {
     Node* slow_ptr = list.getRoot();
     while (slow_ptr != nullptr) {
         int value = slow_ptr->visit();
@@ -45,6 +46,6 @@ void removeDups(LinkedList& list){
         }
         slow_ptr = slow_ptr->getNext();
     }
- }
-
 }
+
+}  // namespace
