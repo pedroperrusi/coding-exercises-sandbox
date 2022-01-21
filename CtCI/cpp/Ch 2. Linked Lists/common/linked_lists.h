@@ -21,7 +21,6 @@ class Node {
         n_ptr->next = node;
     }
 
-
     T visit() {
         return this->data;
     }
