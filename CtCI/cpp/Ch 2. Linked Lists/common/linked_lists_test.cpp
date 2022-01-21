@@ -12,15 +12,15 @@ TEST(CH2_LINKED_LISTS, CONSTRUCTOR) {
 TEST(CH2_LINKED_LISTS, VISIT) {
 	linked_lists::Node<int> node(0);
 	for (int i = 1; i < 10; i++) node.push_back(i);
-    node.print();
+    print(node);
 	for (int i = 0; i < 10; i++) {
-        ASSERT_EQ(node.visit(i), i);
+        ASSERT_EQ(visit(node, i), i);
     }
 }
 
 TEST(CH2_LINKED_LISTS, SIZE) {
 	linked_lists::Node<int> node(0);
 	for (int i = 1; i < 10; i++) node.push_back(i);
-    node.print();
-	ASSERT_EQ(node.size(), 10);
+    print(node);
+	ASSERT_EQ(size(node), 10);
 }
