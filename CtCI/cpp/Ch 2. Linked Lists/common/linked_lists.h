@@ -17,10 +17,10 @@ namespace linked_lists {
 template <typename T>
 class Node {
   public:
-    std::unique_ptr<Node<T>> next;
+    std::unique_ptr<Node<T>> next = nullptr;
     T data;
 
-    Node(T d) : data(d), next(nullptr) {}
+    Node(T d) : data(d) {}
 
     inline T visit() { return this->data; }
     inline void set(T data) { this->data = data; }
@@ -39,10 +39,15 @@ class Node {
 template <typename T>
 class LinkedList {
   private:
-    std::unique_ptr<Node<T>> root;
+    std::unique_ptr<Node<T>> root = nullptr;
 
   public:
-    LinkedList(): root(nullptr) {}
+    LinkedList(){}
+
+    LinkedList(std::initializer_list<T> list){
+        for (const auto& item : list) push_back(item);
+    }
+
     virtual ~LinkedList() { clean(); }
 
     inline Node<T>* getRoot() const { return root.get(); }

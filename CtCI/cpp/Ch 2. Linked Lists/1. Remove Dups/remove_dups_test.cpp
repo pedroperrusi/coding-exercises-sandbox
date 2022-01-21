@@ -3,11 +3,11 @@
 #include "remove_dups.h"
 
 using namespace std;
+using LinkedList = LinkedList;
 
 TEST(CH2_REMOVE_DUPS, REMOVE_DUPS_SIDE_BY_SIDE) {
-	linked_lists::LinkedList<int> list;
-	list.push_back(0);
-	list.push_back(0);
+	LinkedList list({0,  0});
+	
 	ASSERT_EQ(list.visit(0), 0);
 	ASSERT_EQ(list.visit(1), 0);
 	ASSERT_EQ(list.size(), 2);
@@ -21,12 +21,8 @@ TEST(CH2_REMOVE_DUPS, REMOVE_DUPS_SIDE_BY_SIDE) {
 }
 
 TEST(CH2_REMOVE_DUPS, REMOVE_DUPS) {
-	linked_lists::LinkedList<int> list;
-	list.push_back(0);
-	list.push_back(1);
-	list.push_back(0);
-	list.push_back(1);
-	list.push_back(0);
+	LinkedList list({0, 1, 0, 1, 0});
+
 	ASSERT_EQ(list.visit(0), 0);
 	ASSERT_EQ(list.visit(1), 1);
 	ASSERT_EQ(list.visit(2), 0);
@@ -44,9 +40,8 @@ TEST(CH2_REMOVE_DUPS, REMOVE_DUPS) {
 }
 
 TEST(CH2_REMOVE_DUPS_NO_BUFFER, REMOVE_DUPS_SIDE_BY_SIDE) {
-	linked_lists::LinkedList<int> list;
-	list.push_back(0);
-	list.push_back(0);
+	LinkedList list({0,  0});
+
 	ASSERT_EQ(list.visit(0), 0);
 	ASSERT_EQ(list.visit(1), 0);
 	ASSERT_EQ(list.size(), 2);
@@ -60,12 +55,8 @@ TEST(CH2_REMOVE_DUPS_NO_BUFFER, REMOVE_DUPS_SIDE_BY_SIDE) {
 }
 
 TEST(CH2_REMOVE_DUPS_NO_BUFFER, REMOVE_DUPS) {
-	linked_lists::LinkedList<int> list;
-	list.push_back(0);
-	list.push_back(1);
-	list.push_back(0);
-	list.push_back(1);
-	list.push_back(0);
+	LinkedList list({0, 1, 0, 1, 0});
+	
 	ASSERT_EQ(list.visit(0), 0);
 	ASSERT_EQ(list.visit(1), 1);
 	ASSERT_EQ(list.visit(2), 0);
