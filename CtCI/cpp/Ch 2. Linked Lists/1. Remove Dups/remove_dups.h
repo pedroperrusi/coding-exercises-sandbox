@@ -28,6 +28,9 @@ void removeDups(Node& root){
     }
  }
 
+// Remove duplicates using with two concurrent pointers
+// Time complexity O(N)
+// Space complexity O(1) 
  void removeDupsNoBuffer(Node& root){ 
     Node* slow_ptr = &root;
     while (slow_ptr != nullptr) {
