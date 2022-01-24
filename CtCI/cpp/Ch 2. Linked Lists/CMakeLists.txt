@@ -14,3 +14,4 @@ target_link_libraries(
 gtest_discover_tests(ch2_linked_lists_test)
 
 add_subdirectory("1. Remove Dups")
+add_subdirectory("2. Return Kth to last")

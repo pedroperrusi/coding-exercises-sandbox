@@ -8,10 +8,6 @@ using LinkedList = LinkedList;
 TEST(CH2_REMOVE_DUPS, REMOVE_DUPS_SIDE_BY_SIDE) {
     LinkedList list({0, 0});
 
-    ASSERT_EQ(list.visit(0), 0);
-    ASSERT_EQ(list.visit(1), 0);
-    ASSERT_EQ(list.size(), 2);
-
     list.print();
     removeDups(list);
     list.print();
@@ -22,13 +18,6 @@ TEST(CH2_REMOVE_DUPS, REMOVE_DUPS_SIDE_BY_SIDE) {
 
 TEST(CH2_REMOVE_DUPS, REMOVE_DUPS) {
     LinkedList list({0, 1, 0, 1, 0});
-
-    ASSERT_EQ(list.visit(0), 0);
-    ASSERT_EQ(list.visit(1), 1);
-    ASSERT_EQ(list.visit(2), 0);
-    ASSERT_EQ(list.visit(3), 1);
-    ASSERT_EQ(list.visit(4), 0);
-    ASSERT_EQ(list.size(), 5);
 
     list.print();
     removeDups(list);
@@ -42,10 +31,6 @@ TEST(CH2_REMOVE_DUPS, REMOVE_DUPS) {
 TEST(CH2_REMOVE_DUPS_NO_BUFFER, REMOVE_DUPS_SIDE_BY_SIDE) {
     LinkedList list({0, 0});
 
-    ASSERT_EQ(list.visit(0), 0);
-    ASSERT_EQ(list.visit(1), 0);
-    ASSERT_EQ(list.size(), 2);
-
     list.print();
     removeDupsNoBuffer(list);
     list.print();
@@ -56,13 +41,6 @@ TEST(CH2_REMOVE_DUPS_NO_BUFFER, REMOVE_DUPS_SIDE_BY_SIDE) {
 
 TEST(CH2_REMOVE_DUPS_NO_BUFFER, REMOVE_DUPS) {
     LinkedList list({0, 1, 0, 1, 0});
-
-    ASSERT_EQ(list.visit(0), 0);
-    ASSERT_EQ(list.visit(1), 1);
-    ASSERT_EQ(list.visit(2), 0);
-    ASSERT_EQ(list.visit(3), 1);
-    ASSERT_EQ(list.visit(4), 0);
-    ASSERT_EQ(list.size(), 5);
 
     list.print();
     removeDupsNoBuffer(list);
