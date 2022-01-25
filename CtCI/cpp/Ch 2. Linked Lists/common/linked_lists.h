@@ -40,22 +40,28 @@ class LinkedList {
    public:
     std::unique_ptr<Node<T>> root = nullptr;
 
-   /* Default Constructor */
+    /* Default Constructor */
     LinkedList() {}
-    
-    /* Copy Constructor */
-    LinkedList(const LinkedList<T> &list) = delete;
 
-    /* List initialization */ 
+    /* Copy Constructor */
+    LinkedList(const LinkedList<T>& list) = delete;
+
+    /* List initialization */
     LinkedList(std::initializer_list<T> list) {
         for (const auto& item : list) push_back(item);
     }
 
     /* Copy Assignment */
-    LinkedList<T>& operator= (const LinkedList<T> &list) = delete;
+    LinkedList<T>& operator=(const LinkedList<T>& list) = delete;
 
     /* Move Assignment */
-    LinkedList<T>& operator= (LinkedList<T> &&list) = delete;
+    LinkedList<T>& operator=(LinkedList<T>&& list) {
+        if (this != &list) {
+            clean();
+            root = std::move(list.root);
+        }
+        return *this;
+    };
 
     virtual ~LinkedList() { clean(); }
 

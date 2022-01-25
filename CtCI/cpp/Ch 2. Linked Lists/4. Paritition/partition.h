@@ -27,13 +27,13 @@ void partitionWithSublists(LinkedList<T>& list, T pivot) {
     list.clean();
     // if left list is empty, only copy right
     if (left_list.root) {
-        list.root = std::move(left_list.root);
+        list = std::move(left_list);
         // iterate until the end to get tail node
         Node<T>* node = list.getRoot();
         while (node->next) node = node->getNext();
         node->next = std::move(right_list.root);
     } else { // if left list is empty, simply copy right list
-        list.root = std::move(right_list.root);
+        list = std::move(right_list);
     }
     // destructors for left_list and right_list called to cleanup
 }
