@@ -37,15 +37,25 @@ class Node {
  */
 template <typename T>
 class LinkedList {
-   private:
+   public:
     std::unique_ptr<Node<T>> root = nullptr;
 
-   public:
+   /* Default Constructor */
     LinkedList() {}
+    
+    /* Copy Constructor */
+    LinkedList(const LinkedList<T> &list) = delete;
 
+    /* List initialization */ 
     LinkedList(std::initializer_list<T> list) {
         for (const auto& item : list) push_back(item);
     }
+
+    /* Copy Assignment */
+    LinkedList<T>& operator= (const LinkedList<T> &list) = delete;
+
+    /* Move Assignment */
+    LinkedList<T>& operator= (LinkedList<T> &&list) = delete;
 
     virtual ~LinkedList() { clean(); }
 
