@@ -73,6 +73,20 @@ class LinkedList {
         }
     }
 
+    void push_front(T d) {
+        auto node = std::make_unique<Node<T>>(d);
+        if (root == nullptr) {
+            root = std::move(node);
+            return;
+        }
+        // copy root to node
+        node->next = std::move(root->next);
+        node->set(root->visit());
+        // change root and point it to node
+        root->set(d);
+        root->next = std::move(node);
+    }
+
     void push_back(T d) {
         auto node = std::make_unique<Node<T>>(d);
         if (root == nullptr) {

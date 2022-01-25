@@ -47,3 +47,12 @@ TEST(CH2_LINKED_LISTS, CLEAN) {
     list.clean();
     ASSERT_FALSE(list.getRoot());
 }
+
+TEST(CH2_LINKED_LISTS, PUSH_FRONT) {
+    linked_lists::LinkedList<int> list;
+    for (int i = 0; i < 10; i++) list.push_front(i);
+    list.print();
+    for (int i = 0; i < 10; i++) {
+        ASSERT_EQ(list.visit(i), 9-i);
+    }
+}
