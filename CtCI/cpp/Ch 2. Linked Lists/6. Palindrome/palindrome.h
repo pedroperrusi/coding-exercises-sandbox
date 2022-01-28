@@ -29,3 +29,9 @@ bool isPalindrome(LinkedList<char>& list) {
     }
     return true;
 }
+
+// TODO: we can find the middle of the list via a slow and fast runner (2 visits/step)
+// We can then save space by only storing values on the reversed list until the middle of the list.
+
+// TODO2: There's also a recursive approach to this problem
+// It should still be a O(N) in time and space because of the recursion.
