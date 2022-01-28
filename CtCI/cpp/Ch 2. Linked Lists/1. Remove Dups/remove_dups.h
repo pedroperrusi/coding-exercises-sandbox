@@ -1,7 +1,7 @@
 #include <iostream>
 #include <unordered_map>
 
-#include "linked_lists.h"
+#include "linked_lists_unique.h"
 
 using namespace std;
 using LinkedList = linked_lists::LinkedList<int>;
