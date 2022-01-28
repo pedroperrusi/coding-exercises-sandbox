@@ -1,7 +1,7 @@
 #include <iostream>
 #include <memory>
 
-namespace linked_lists {
+namespace linked_lists::unique {
 
 /**
  * @brief Single linked list node class

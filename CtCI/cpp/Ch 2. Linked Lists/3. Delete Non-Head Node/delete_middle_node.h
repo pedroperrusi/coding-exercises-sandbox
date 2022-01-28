@@ -1,6 +1,6 @@
 #include "linked_lists_unique.h"
 
-using namespace linked_lists;
+using namespace linked_lists::unique;
 
 /**
  * @brief Deleting a node in the middle means its note the list head or tail node.

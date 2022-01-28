@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 
 using namespace std;
-using namespace linked_lists;
+using namespace linked_lists::unique;
 
 TEST(CH2_3_MIDDLE_NON_HEAD_NODE, MIDDLE_NODE) {
     LinkedList<int> list({0, 1, 2});

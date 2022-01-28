@@ -1,6 +1,6 @@
 #include "linked_lists_unique.h"
 
-using namespace linked_lists;
+using namespace linked_lists::unique;
 
 /**
  * @brief Trivial solution when you already know the size of the linked_list

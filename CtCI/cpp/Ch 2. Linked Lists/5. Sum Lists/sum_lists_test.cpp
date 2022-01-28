@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 
 using namespace std;
-using namespace linked_lists;
+using namespace linked_lists::unique;
 
 TEST(CH2_5_SUM_LISTS, SINGLE_DIGIT) {
     LinkedList<int> list1({1});

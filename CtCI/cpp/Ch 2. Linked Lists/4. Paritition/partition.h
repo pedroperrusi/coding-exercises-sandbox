@@ -2,7 +2,7 @@
 
 #include "linked_lists_unique.h"
 
-using namespace linked_lists;
+using namespace linked_lists::unique;
 
 /**
  * @brief Creates 2 sublists and add elements along the way

@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 
 using namespace std;
-using namespace linked_lists;
+using namespace linked_lists::unique;
 
 TEST(CH2_4_PARTITION, NO_WORK_HERE) {
     LinkedList<int> list({0, 2, 3});

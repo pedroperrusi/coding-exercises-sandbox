@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 
 using namespace std;
-using namespace linked_lists;
+using namespace linked_lists::unique;
 
 TEST(CH2_2_RETURN_KTH_TO_LAST_TRIVIAL, SINGLE_ELEMENT_LIST) {
     LinkedList<int> list({0});

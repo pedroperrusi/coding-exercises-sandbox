@@ -4,8 +4,8 @@
 #include "linked_lists_unique.h"
 
 using namespace std;
-using LinkedList = linked_lists::LinkedList<int>;
-using Node = linked_lists::Node<int>;
+using LinkedList = linked_lists::unique::LinkedList<int>;
+using Node = linked_lists::unique::Node<int>;
 
 namespace {
 

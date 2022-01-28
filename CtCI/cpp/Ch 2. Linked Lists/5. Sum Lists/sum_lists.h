@@ -2,7 +2,7 @@
 
 #include "linked_lists_unique.h"
 
-using namespace linked_lists;
+using namespace linked_lists::unique;
 
 void sumLists(LinkedList<int>& list1, LinkedList<int>& list2,
               LinkedList<int>& output) {
