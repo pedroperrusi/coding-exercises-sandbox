@@ -1,5 +1,5 @@
 # Subdirectory for chapter 2 exercises
-add_subdirectory("linked_list")
+add_subdirectory("linked_lists")
 
 add_subdirectory("1. Remove Dups")
 add_subdirectory("2. Return Kth to last")
