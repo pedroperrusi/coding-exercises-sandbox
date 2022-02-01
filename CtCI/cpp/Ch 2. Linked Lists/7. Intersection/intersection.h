@@ -1,11 +1,11 @@
 #include <unordered_map>
 
-#include "linked_lists_raw.h"
+#include "linked_lists_shared.h"
 
-using namespace linked_lists::raw;
+using namespace linked_lists::shared;
 
-inline Node<int>* findIntersection(LinkedList<int>& list1,
-                                   LinkedList<int>& list2) {
+inline NodePtr<int> findIntersection(LinkedList<int>& list1,
+                                     LinkedList<int>& list2) {
     // Lists that intercept must have the same number of tail nodes after interception
     // So the length offset between lists must come from different nodes before the intersection
     auto node1_ptr = list1.getRoot();
