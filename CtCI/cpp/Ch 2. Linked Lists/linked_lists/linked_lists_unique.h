@@ -130,4 +130,4 @@ class LinkedList {
     }
 };
 
-}  // namespace linked_lists
+}  // namespace linked_lists::unique

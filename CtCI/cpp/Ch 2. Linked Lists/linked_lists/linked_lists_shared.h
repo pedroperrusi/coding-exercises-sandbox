@@ -6,13 +6,9 @@ namespace linked_lists::shared {
 
 /**
  * @brief Single linked list node class
- * Designed to be the owner of next element.
- * Warning: memory deallocation is not automatic
- * Explicit calls for deallocation should either assign to null, or move the smart pointer.
- * Options:
- *      node->next = nullptr;
- *      node->next = other_node;
- * Raw pointers obtained with getNext do not own the neighboor and cannot delete it.
+ * Designed to have a shared copy of next element.
+ * Warning: memory deallocation should happen when no more copies of the node go out of scope, or are assigned to nullptr.
+ *
  * @tparam T typename of the data container
  */
 template <typename T>
