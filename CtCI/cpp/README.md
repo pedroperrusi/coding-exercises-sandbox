@@ -28,4 +28,6 @@ ctest --verbose
 ```
 
 3 - (Optional) Check any memory leakage in the exercises
+```(bash)
 ctest -T memcheck
+```
