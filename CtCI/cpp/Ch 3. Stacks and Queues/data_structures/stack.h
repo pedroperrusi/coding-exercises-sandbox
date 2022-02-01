@@ -37,7 +37,7 @@ class Stack {
         return std::make_shared<StackNode>(d);
     }
 
-    NodePtr _top;
+    NodePtr _top = nullptr;
 
    public:
     /* Default Constructor */
@@ -61,7 +61,7 @@ class Stack {
 
     inline void push(T data) {
         NodePtr node = createNode(data);
-        if (!_top) {
+        if (isEmpty()) {
             _top = node;
             return;
         }
@@ -70,18 +70,18 @@ class Stack {
     }
 
     inline T pop() {
-        if (!_top) throw std::range_error("Stack is empty");
+        if (isEmpty()) throw std::range_error("Stack is empty");
         T item = _top->peek();
         _top = _top->_next;
         return item;
     }
 
     inline T peek() {
-        if (!_top) throw std::range_error("Stack is empty");
+        if (isEmpty()) throw std::range_error("Stack is empty");
         return _top->peek();
     }
 
-    inline bool isEmpty() { return _top; }
+    inline bool isEmpty() { return _top == nullptr; }
 };
 
 }  // namespace stack

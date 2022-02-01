@@ -4,6 +4,7 @@ enable_testing()
 add_executable(
   ch3_stacks_and_queues_test
   "test/stack_test.cpp"
+  "test/queue_test.cpp"
 )
 target_link_libraries(
   ch3_stacks_and_queues_test
