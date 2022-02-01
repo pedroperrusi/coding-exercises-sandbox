@@ -4,6 +4,15 @@ project(coding-exercises)
 # GoogleTest requires at least C++17
 set(CMAKE_CXX_STANDARD 17)
 add_compile_options(-Wall -Wextra -Wpedantic)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# Allow for memory check in ctest
+include (CTest)
+find_program( MEMORYCHECK_COMMAND valgrind )
+set( MEMORYCHECK_COMMAND_OPTIONS "--trace-children=yes --leak-check=full" )
+# references
+#   - https://stackoverflow.com/questions/9303711/how-do-i-make-ctest-run-a-program-with-valgrind-without-dart
+#   - https://stackoverflow.com/questions/40325957/how-do-i-add-valgrind-tests-to-my-cmake-test-target
 
 # place binaries and libraries according to GNU standards
 include(GNUInstallDirs)

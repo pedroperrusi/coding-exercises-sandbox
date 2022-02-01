@@ -4,6 +4,7 @@ enable_testing()
 add_executable(
   ch2_linked_lists_test
   "test/linked_lists_unique_test.cpp"
+  "test/linked_lists_shared_test.cpp"
   "test/linked_lists_raw_test.cpp"
 )
 target_link_libraries(

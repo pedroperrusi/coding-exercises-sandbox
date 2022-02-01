@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 
 namespace linked_lists::raw {
@@ -8,7 +9,7 @@ class Node {
     Node<T>* next = nullptr;
     T data;
 
-    Node(T d) : data(d) {}
+    explicit Node(T d) : data(d) {}
 
     virtual ~Node() {
         delete next;
@@ -43,22 +44,31 @@ class LinkedList {
         root = nullptr;
     }
 
-    void push_front(T d) {
-        Node<T>* node = new Node<T>(d);
+    void push_front(Node<T>* node) {
         if (root == nullptr) {
             root = node;
             return;
         }
         // copy root to node
+        T value = node->visit();
         node->next = root->next;
         node->set(root->visit());
         // change root and point it to node
-        root->set(d);
+        root->set(value);
         root->next = node;
+    }
+
+    void push_front(T d) {
+        Node<T>* node = new Node<T>(d);
+        push_front(node);
     }
 
     void push_back(T d) {
         Node<T>* node = new Node<T>(d);
+        push_back(node);
+    }
+
+    void push_back(Node<T>* node) {
         if (root == nullptr) {
             root = node;
             return;

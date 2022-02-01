@@ -2,7 +2,7 @@
 #include <iostream>
 #include <memory>
 
-namespace linked_lists::unique {
+namespace linked_lists::shared {
 
 /**
  * @brief Single linked list node class
@@ -11,22 +11,37 @@ namespace linked_lists::unique {
  * Explicit calls for deallocation should either assign to null, or move the smart pointer.
  * Options:
  *      node->next = nullptr;
- *      node->next = std::move(other_node);
+ *      node->next = other_node;
  * Raw pointers obtained with getNext do not own the neighboor and cannot delete it.
  * @tparam T typename of the data container
  */
 template <typename T>
 class Node {
    public:
-    std::unique_ptr<Node<T>> next = nullptr;
+    using Ptr = std::shared_ptr<Node<T>>;
+    Ptr next = nullptr;
     T data;
 
     explicit Node(T d) : data(d) {}
 
     inline T visit() { return this->data; }
     inline void set(T data) { this->data = data; }
-    inline Node<T>* getNext() const { return next.get(); }
+    inline Ptr getNext() const { return next; }
 };
+
+/**
+ * @brief  Having an alias to call Node<T>::Ptr
+ */
+template <typename T>
+using NodePtr = typename Node<T>::Ptr;
+
+/**
+ * @brief Create a Node object
+ */
+template <typename T>
+static NodePtr<T> createNode(T data) {
+    return std::make_shared<Node<T>>(data);
+}
 
 /**
  * @brief Single linked list class
@@ -39,72 +54,69 @@ class Node {
 template <typename T>
 class LinkedList {
    public:
-    std::unique_ptr<Node<T>> root = nullptr;
+    NodePtr<T> root = nullptr;
 
     /* Default Constructor */
     LinkedList() {}
 
     /* Copy Constructor */
-    LinkedList(const LinkedList<T>& list) = delete;
+    LinkedList(const LinkedList<T>& list) { *this = list.root; }
 
     /* List initialization */
-    LinkedList(std::initializer_list<T> list) {
+    explicit LinkedList(std::initializer_list<T> list) {
         for (const auto& item : list) push_back(item);
     }
 
     /* Copy Assignment */
-    LinkedList<T>& operator=(const LinkedList<T>& list) = delete;
+    LinkedList<T>& operator=(const LinkedList<T>& list) = default;
 
     /* Move Assignment */
-    LinkedList<T>& operator=(LinkedList<T>&& list) {
-        if (this != &list) {
-            clean();
-            root = std::move(list.root);
-        }
-        return *this;
-    };
+    LinkedList<T>& operator=(LinkedList<T>&& list) = default;
 
-    virtual ~LinkedList() { clean(); }
+    virtual ~LinkedList() {}
 
-    inline Node<T>* getRoot() const { return root.get(); }
+    inline NodePtr<T> getRoot() const { return root; }
 
-    void clean() {
-        while (root) {
-            root = std::move(root->next);
-        }
-    }
-
-    void push_front(T d) {
-        auto node = std::make_unique<Node<T>>(d);
+    void push_front(NodePtr<T>& node) {
         if (root == nullptr) {
-            root = std::move(node);
+            root = node;
             return;
         }
         // copy root to node
-        node->next = std::move(root->next);
+        T value = node->visit();
+        node->next = root->next;
         node->set(root->visit());
         // change root and point it to node
-        root->set(d);
-        root->next = std::move(node);
+        root->set(value);
+        root->next = node;
+    }
+
+    void push_front(T d) {
+        auto node = createNode(d);
+        push_front(node);
     }
 
     void push_back(T d) {
-        auto node = std::make_unique<Node<T>>(d);
+        auto node = createNode(d);
+        push_back(node);
+    }
+
+    void push_back(const NodePtr<T>& node) {
         if (root == nullptr) {
-            root = std::move(node);
+            root = node;
             return;
         }
-        // else, iterate to the last element
-        Node<T>* n_ptr = getRoot();
+        // iterate to the last element
+        auto n_ptr = root;
         while (n_ptr->next != nullptr) {
-            n_ptr = n_ptr->getNext();
+            n_ptr = n_ptr->next;
         }
-        n_ptr->next = std::move(node);
+        n_ptr->next = node;
     }
 
     T visit(size_t idx) {
         size_t i = 0;
-        for (const Node<T>* n_ptr = getRoot(); n_ptr != nullptr;
+        for (auto n_ptr = getRoot(); n_ptr != nullptr;
              n_ptr = n_ptr->getNext()) {
             if (i == idx) return n_ptr->data;
             i++;
@@ -113,7 +125,7 @@ class LinkedList {
     }
 
     void print() {
-        const Node<T>* n_ptr;
+        NodePtr<T> n_ptr;
         for (n_ptr = getRoot(); n_ptr->next != nullptr;
              n_ptr = n_ptr->getNext()) {
             std::cout << n_ptr->data << " -> ";
@@ -123,11 +135,10 @@ class LinkedList {
 
     size_t size() {
         size_t size = 0;
-        for (const Node<T>* n_ptr = getRoot(); n_ptr != nullptr;
-             n_ptr = n_ptr->getNext())
+        for (auto n_ptr = getRoot(); n_ptr != nullptr; n_ptr = n_ptr->getNext())
             size++;
         return size;
     }
 };
 
-}  // namespace linked_lists
+}  // namespace linked_lists::shared
