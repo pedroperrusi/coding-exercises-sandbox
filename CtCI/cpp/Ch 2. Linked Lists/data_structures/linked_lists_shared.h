@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <memory>
+#include <exception>
 
 namespace linked_lists::shared {
 
@@ -56,7 +57,7 @@ class LinkedList {
     LinkedList() {}
 
     /* Copy Constructor */
-    LinkedList(const LinkedList<T>& list) { *this = list.root; }
+    LinkedList(const LinkedList<T>& list) = default
 
     /* List initialization */
     explicit LinkedList(std::initializer_list<T> list) {
@@ -117,7 +118,7 @@ class LinkedList {
             if (i == idx) return n_ptr->data;
             i++;
         }
-        return T();
+        throw std::out_of_range("Index exceeds list size");
     }
 
     void print() {

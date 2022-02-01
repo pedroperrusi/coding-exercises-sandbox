@@ -88,7 +88,7 @@ class LinkedList {
             if (i == idx) return n_ptr->data;
             i++;
         }
-        return T();
+        throw std::out_of_range("Index exceeds list size");
     }
 
     void print() {
