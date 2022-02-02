@@ -59,7 +59,7 @@ class Stack {
 
     virtual ~Stack() {}
 
-    inline void push(T data) {
+    virtual inline void push(T data) {
         NodePtr node = createNode(data);
         if (isEmpty()) {
             _top = node;
@@ -69,19 +69,19 @@ class Stack {
         _top = node;
     }
 
-    inline T pop() {
+    virtual inline T pop() {
         if (isEmpty()) throw std::range_error("Stack is empty");
         T item = _top->peek();
         _top = _top->_next;
         return item;
     }
 
-    inline T peek() {
+    virtual inline T peek() {
         if (isEmpty()) throw std::range_error("Stack is empty");
         return _top->peek();
     }
 
-    inline bool isEmpty() { return _top == nullptr; }
+    virtual inline bool isEmpty() { return _top == nullptr; }
 };
 
 }  // namespace stack
