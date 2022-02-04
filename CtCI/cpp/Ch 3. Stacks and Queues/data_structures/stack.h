@@ -12,7 +12,7 @@ namespace stack {
  */
 template <typename T>
 class Stack {
-   private:
+   protected:
     /**
      * @brief Hidden StackNode class
      */
