@@ -17,7 +17,7 @@ TEST(CH3_2_MIN_STACK, SINGLE_PUSH_POP) {
     set_of_stacks.push(0);
     ASSERT_EQ(set_of_stacks.pop(), 0);
 }
-   
+ 
 TEST(CH3_2_MIN_STACK, STACK_OVERFLOW) {
     SetOfStacks<int, 3> set_of_stacks;
     set_of_stacks.push(0);

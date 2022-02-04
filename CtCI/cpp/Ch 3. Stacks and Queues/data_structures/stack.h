@@ -24,6 +24,8 @@ class Stack {
 
         inline T peek() { return _data; }
 
+        inline void set(T d) { _data = d; }
+
         Ptr _next = nullptr;
         T _data;
     };
@@ -79,6 +81,11 @@ class Stack {
     virtual inline T peek() {
         if (isEmpty()) throw std::range_error("Stack is empty");
         return _top->peek();
+    }
+
+    virtual inline void swap(T data) {
+        if (isEmpty()) throw std::range_error("Stack is empty");
+        _top->set(data);
     }
 
     virtual inline bool isEmpty() { return _top == nullptr; }
