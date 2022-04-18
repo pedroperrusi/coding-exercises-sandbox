@@ -57,7 +57,7 @@ class LinkedList {
     LinkedList() {}
 
     /* Copy Constructor */
-    LinkedList(const LinkedList<T>& list) = default
+    LinkedList(const LinkedList<T>& list) = default;
 
     /* List initialization */
     explicit LinkedList(std::initializer_list<T> list) {
